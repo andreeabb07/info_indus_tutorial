@@ -1,6 +1,43 @@
-##############################################################
-système 5 barres de dessin robotisé avec Raspberry Pi et ROS2
-##############################################################
+################################################################
+ Système 5 barres de dessin robotisé avec Raspberry Pi et ROS 2
+################################################################
+
+.. figure:: resources/img/real_system_photo.png
+   :align: center
+   :width: 70%
+
+   Le pantographe (système 5 barres) utilisé pour le projet.
+
+Ce projet porte sur un pantographe, aussi appelé système 5 barres : un mécanisme
+plan à deux bras motorisés qui déplace un crayon pour dessiner sur une feuille.
+Notre objectif est de le faire fonctionner avec ROS 2 sur un Raspberry Pi 5,
+de le simuler, et de documenter l'ensemble de la démarche.
+
+.. note::
+
+   Le point de départ de cette documentation (structure des pages, modèle 3D, schéma
+   cinématique) est le canevas fourni par M. Manuel YGUEL dans le cours
+   `Informatique industrielle avec ROS2 <https://yguel.github.io/informatique_industrielle_avec_ROS2/>`_.
+
+=====================
+Démarche du projet
+=====================
+
+Nous avons découpé le travail en onze étapes :
+
+#. décrire la plateforme mécanique ;
+#. décrire le matériel électronique (Raspberry Pi, carte et moteurs Dynamixel), avec les liens vers les documentations techniques ;
+#. créer la représentation du système 5 barres dans un fichier URDF ;
+#. visualiser ce modèle dans RViz ;
+#. établir le modèle du mécanisme et les équations qui permettent de piloter la position du crayon ;
+#. créer un package ROS 2 pour commander le système 5 barres ;
+#. écrire et documenter des tests ;
+#. écrire un programme qui fait dessiner le système 5 barres ;
+#. tester sur le système réel ;
+#. écrire un code de simulation ;
+#. tester en simulation avec Gazebo et RViz.
+
+Chacune de ces étapes est détaillée dans les pages suivantes.
 
 .. toctree::
    :maxdepth: 2
@@ -8,37 +45,3 @@ système 5 barres de dessin robotisé avec Raspberry Pi et ROS2
    p50s01_material_description
    p50s02_mechanical_description
    p50s03_urdf
-
-.. figure:: resources/img/real_system_photo.png
-   :align: center
-
-=====================
-Description du projet
-=====================
-
-.. Pour ce travail pratique, vous allez installer une plateforme robotique ROS2 sur un Raspberry Pi (Pi5) et documenter le projet.
-
-L'objectif de ces travaux pratiques et de faire fonctionner la plateforme robotique, le système 5 barres avec ROS2 sur un Raspberry Pi (Pi5) et documenter le projet.
-Le projet consiste donc à:
-
-.. #. installer Ubuntu sur le Raspberry Pi, 
-.. #. installer ROS2,
-.. #. Tester et documenter les tests de l'installation système 
-
-#. Décrire la plateforme mécanique
-#. Décrire le matériel électronique, carte dynamixel avec les liens sur les documentations techniques (datasheets)
-#. Créer la représentation mécanique du système 5 barres dans un fichier URDF
-#. Visualiser le résultat avec RVIZ
-#. Décrire la dynamique et donner les équations pour piloter la position de l'organe terminal du système 5 barres: comment 
-#. Créer un package ROS2 pour contrôler le système 5 barres
-#. Créer des tests et documenter les tests
-#. Créer un code pour dessiner avec le système 5 barres
-#. Tester en réel avec le système 5 barres
-#. Créer un code de simulation pour le système 5 barres
-#. Tester en simulation avec Gazebo et RViz
-
-La documentation correspondra à un fork de ce projet et sera publiée sur votre github.
-Dans ce projet un canevas de documentation est fourni. Vous devrez le compléter et le publier.
-Vous soumettrez votre travail sous forme de push request à ce projet.
-
-Vous serez évalué sur la qualité de la documentation de votre projet et le pilotage du système 5 barres réel.

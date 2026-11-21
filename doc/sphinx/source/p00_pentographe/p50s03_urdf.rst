@@ -1,53 +1,80 @@
-########################################################
- Génération de la description URDF du système 5 barres
-########################################################
+.. _urdf:
 
-Nous allons utiliser le modèle 3D au format step conçu et réalisé par M. Olivier PICCIN pour générer la description URDF du système 5 barres.
+#########################################################
+ Génération de la description URDF du système 5 barres
+#########################################################
+
+Pour visualiser et simuler le système 5 barres avec ROS 2, nous avons besoin de le décrire
+dans un fichier URDF (*Unified Robot Description Format*) : la liste de ses pièces
+(*links*), des liaisons entre elles (*joints*) et de leurs modèles 3D.
+
+Nous partons du modèle 3D au format STEP conçu et réalisé par M. Olivier PICCIN.
 
 .. figure:: resources/img/pantograph_step_model.png
    :align: center
 
-Il s'agit d'un assemblage comportant 5 pièces principales :
+   Modèle 3D de l'assemblage.
 
-  #. BATI_ASM: le bâti de la strucuture du système 5 barres avec les 2 moteurs pas à pas. Dans l'URDF nous allons le nommer ``base``.
-  #. LINK1_ASM: le bras gauche du système 5 barres. Dans l'URDF nous allons le nommer ``link1``.
-  #. LINK2_ASM: l'avant bras gauche du système 5 barres. Dans l'URDF nous allons le nommer ``link2``.
-  #. LINK3_ASM: l'avant bras droit du système 5 barres. Dans l'URDF nous allons le nommer ``link3``.
-  #. LINK4_ASM: le bras droit du système 5 barres. Dans l'URDF nous allons le nommer ``link4``.
+Pièces de l'assemblage
+======================
 
-`maquette-5-barres_asm.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/maquette-5-barres_asm.stp>`__
+L'assemblage comporte cinq pièces principales. Dans l'URDF, nous leur donnons les noms suivants :
 
-Du point de vue URDF, nous aurons aussi besoin de définir l'outil de travail: le crayon et donc de le référencer par rapport à son support qui se trouve être sur l'avant bras gauche du pentographe (``link2``).
+.. list-table::
+   :header-rows: 1
 
-Dans un fichier URDF, les modèles 3D sont utilisés à partir de fichiers collada (extension .dae).
-Il va donc falloir convertir notre modèle 3D au format step en un ensemble de 5 modèles 3D au format collada.
+   * - Pièce dans le modèle 3D
+     - Nom dans l'URDF
+     - Rôle
+   * - BATI_ASM
+     - ``base``
+     - le bâti, qui porte les deux moteurs
+   * - LINK1_ASM
+     - ``link1``
+     - le bras gauche
+   * - LINK2_ASM
+     - ``link2``
+     - l'avant-bras gauche
+   * - LINK3_ASM
+     - ``link3``
+     - l'avant-bras droit
+   * - LINK4_ASM
+     - ``link4``
+     - le bras droit
 
-==================================
-Extraction des modèles 3D en step
-==================================
+Modèle complet : `maquette-5-barres_asm.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/maquette-5-barres_asm.stp>`__
 
-Pour extraire les modèles 3D au format step, vous pouvez utiliser le logiciel freecad.
+L'outil de travail, le crayon, doit aussi apparaître dans l'URDF. Son support est fixé
+sur l'avant-bras gauche (``link2``) : c'est donc par rapport à cette pièce que nous le positionnons.
 
-   #. `base.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/base.stp>`__
-   #. `link1.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link1.stp>`__
-   #. `link2.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link2.stp>`__
-   #. `link3.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link3.stp>`__
-   #. `link4.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link4.stp>`__
+Un fichier URDF utilise des modèles 3D au format COLLADA (extension ``.dae``).
+Il faut donc découper l'assemblage STEP en cinq pièces, puis convertir chacune en COLLADA.
 
-=====================================
-Conversion des modèles 3D en collada
-=====================================
+Extraction des pièces au format STEP
+====================================
 
-Pour convertir les modèles 3D en collada (dae), vous pouvez utiliser le logiciel freecad.
+Les pièces peuvent être extraites de l'assemblage avec le logiciel FreeCAD :
 
-   #. `base.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/base.dae>`__
-   #. `link1.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link1.dae>`__
-   #. `link2.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link2.dae>`__
-   #. `link3.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link3.dae>`__
-   #. `link4.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link4.dae>`__
+#. `base.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/base.stp>`__
+#. `link1.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link1.stp>`__
+#. `link2.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link2.stp>`__
+#. `link3.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link3.stp>`__
+#. `link4.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link4.stp>`__
 
-=========================
+Conversion des pièces au format COLLADA
+=======================================
+
+La conversion en COLLADA peut également se faire avec FreeCAD :
+
+#. `base.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/base.dae>`__
+#. `link1.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link1.dae>`__
+#. `link2.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link2.dae>`__
+#. `link3.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link3.dae>`__
+#. `link4.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link4.dae>`__
+
 Création du fichier URDF
-=========================
+========================
 
-Dans un fichier URDF les modèles 3D sont référencés par des balises ``<mesh>``.
+Dans le fichier URDF, chaque modèle 3D est référencé par une balise ``<mesh>``.
+
+.. à compléter
