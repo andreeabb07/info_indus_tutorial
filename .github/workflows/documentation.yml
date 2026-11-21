@@ -37,7 +37,8 @@ jobs:
             cd ../..
       - name: Create commit
         run: |
-            git clone https://github.com/zduman01/info_indus_tutorial.git --branch gh-pages --single-branch gh-pages
+            # Récupère la branche gh-pages du dépôt principal (organisation), celle publiée par GitHub Pages
+            git clone https://github.com/info-indus-groupe-bujor-duman-lafrouji/info_indus_tutorial.git --branch gh-pages --single-branch gh-pages
             mkdir -p gh-pages/docs/
             cp -r ./doc/sphinx/build/html/* gh-pages/
             cd gh-pages
