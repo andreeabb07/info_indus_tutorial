@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Dz_info_indus_tutorial'
-copyright = '2026, duman'
-author = 'duman'
+project = 'Pantographe robotisé avec Raspberry Pi 5 et ROS 2'
+copyright = '2026, Andreea BUJOR, Zilan DUMAN, Clément LAFROUJI'
+author = 'Andreea BUJOR, Zilan DUMAN, Clément LAFROUJI'
 release = '1'
 
 # -- General configuration ---------------------------------------------------
