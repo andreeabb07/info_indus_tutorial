@@ -15,7 +15,7 @@ Il s'agit d'un assemblage comportant 5 pièces principales :
   #. LINK3_ASM: l'avant bras droit du système 5 barres. Dans l'URDF nous allons le nommer ``link3``.
   #. LINK4_ASM: le bras droit du système 5 barres. Dans l'URDF nous allons le nommer ``link4``.
 
-:download:`maquette-5-barres_asm.stp <resources/cad/maquette-5-barres_asm.stp>`
+`maquette-5-barres_asm.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/maquette-5-barres_asm.stp>`__
 
 Du point de vue URDF, nous aurons aussi besoin de définir l'outil de travail: le crayon et donc de le référencer par rapport à son support qui se trouve être sur l'avant bras gauche du pentographe (``link2``).
 
@@ -27,24 +27,24 @@ Extraction des modèles 3D en step
 ==================================
 
 Pour extraire les modèles 3D au format step, vous pouvez utiliser le logiciel freecad.
-   
-   #. :download:`base.stp <resources/cad/base.stp>`
-   #. :download:`link1.stp <resources/cad/link1.stp>`
-   #. :download:`link2.stp <resources/cad/link2.stp>`
-   #. :download:`link3.stp <resources/cad/link3.stp>`
-   #. :download:`link4.stp <resources/cad/link4.stp>`
+
+   #. `base.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/base.stp>`__
+   #. `link1.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link1.stp>`__
+   #. `link2.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link2.stp>`__
+   #. `link3.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link3.stp>`__
+   #. `link4.stp <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link4.stp>`__
 
 =====================================
 Conversion des modèles 3D en collada
 =====================================
 
 Pour convertir les modèles 3D en collada (dae), vous pouvez utiliser le logiciel freecad.
-   
-   #. :download:`base.dae <resources/cad/base.dae>`
-   #. :download:`link1.dae <resources/cad/link1.dae>`
-   #. :download:`link2.dae <resources/cad/link2.dae>`
-   #. :download:`link3.dae <resources/cad/link3.dae>`
-   #. :download:`link4.dae <resources/cad/link4.dae>`
+
+   #. `base.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/base.dae>`__
+   #. `link1.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link1.dae>`__
+   #. `link2.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link2.dae>`__
+   #. `link3.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link3.dae>`__
+   #. `link4.dae <https://github.com/yguel/informatique_industrielle_avec_ROS2/raw/rolling/doc/sphinx/source/p00_5_bars_system_pencil_holder_with_rpi_and_dynamixel/resources/cad/link4.dae>`__
 
 =========================
 Création du fichier URDF
