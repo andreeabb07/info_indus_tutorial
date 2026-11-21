@@ -1,0 +1,14 @@
+# Documentation HTML générée par Sphinx (make html)
+doc/sphinx/build/
+
+# Environnements virtuels Python
+.venv/
+
+# Fichiers de cache Python
+__pycache__/
+*.pyc
+
+# Dossiers générés par la compilation ROS 2 (colcon build)
+build/
+install/
+log/
