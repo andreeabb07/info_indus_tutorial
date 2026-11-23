@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="pentographe">
+  <link name="base">
+    <visual>
+      <origin xyz="0.000000 0.000000 0.000000" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pentographe_description/meshes/base.dae" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="link1">
+    <visual>
+      <origin xyz="0.080000 -0.080000 -0.070000" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pentographe_description/meshes/link1.dae" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="link2">
+    <visual>
+      <origin xyz="0.080000 -0.080000 0.010000" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pentographe_description/meshes/link2.dae" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="link4">
+    <visual>
+      <origin xyz="-0.058000 -0.080000 -0.070000" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pentographe_description/meshes/link4.dae" />
+      </geometry>
+    </visual>
+  </link>
+  <link name="link3">
+    <visual>
+      <origin xyz="-0.090200 -0.080000 0.002100" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://pentographe_description/meshes/link3.dae" />
+      </geometry>
+    </visual>
+  </link>
+  <joint name="joint_moteur_gauche" type="revolute">
+    <parent link="base" />
+    <child link="link1" />
+    <origin xyz="-0.080000 0.080000 0.070000" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.14159" upper="3.14159" effort="1" velocity="1" />
+  </joint>
+  <joint name="joint_coude_gauche" type="revolute">
+    <parent link="link1" />
+    <child link="link2" />
+    <origin xyz="0.000000 0.000000 -0.080000" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.14159" upper="3.14159" effort="1" velocity="1" />
+  </joint>
+  <joint name="joint_moteur_droit" type="revolute">
+    <parent link="base" />
+    <child link="link4" />
+    <origin xyz="0.058000 0.080000 0.070000" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.14159" upper="3.14159" effort="1" velocity="1" />
+  </joint>
+  <joint name="joint_coude_droit" type="revolute">
+    <parent link="link4" />
+    <child link="link3" />
+    <origin xyz="0.032200 0.000000 -0.072100" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.14159" upper="3.14159" effort="1" velocity="1" />
+  </joint>
+  <link name="repere_pen"/>
+  <joint name="fixation_repere_pen" type="fixed">
+    <parent link="base"/>
+    <child link="repere_pen"/>
+    <origin xyz="-0.080 0.080 0.070" rpy="-1.57079632679 0 0"/>
+  </joint>
+</robot>
