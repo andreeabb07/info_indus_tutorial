@@ -1,0 +1,25 @@
+# Modèle de calibration des moteurs AX-12A — À REMPLIR après la calibration.
+#
+# Ces valeurs servent au NŒUD PILOTE (partie pilotage) pour convertir les angles
+# q1, q4 produits par le nœud cinématique (radians, mesurés depuis x0) en
+# consignes moteur (entier de 0 à 1023).
+#
+# Pour chaque moteur :
+#   theta_moteur[deg] = s * (q[deg] - q0[deg])
+#   position          = round(theta_moteur / 300 * 1023)
+#
+# Procédure de calibration :
+#   1. placer les bras dans la position de référence (ex. bras gauche vertical) ;
+#   2. lire la valeur renvoyée par chaque moteur dans cette position ;
+#   3. en déduire q0 (angle du bras quand le moteur indique 0) et s (+1 ou -1).
+
+pilote_moteurs:
+  ros__parameters:
+    moteur_gauche:
+      id: 0          # identifiant Dynamixel, à relever
+      q0_deg: 0.0    # angle du bras à la position moteur 0, à mesurer
+      s: 1           # sens de rotation : +1 ou -1, à déterminer
+    moteur_droit:
+      id: 0
+      q0_deg: 0.0
+      s: 1

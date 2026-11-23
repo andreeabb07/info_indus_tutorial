@@ -1,0 +1,23 @@
+# Paramètres du nœud cinématique du pantographe.
+#
+# Ajustez ici les valeurs sans modifier le code Python.
+# Toutes les longueurs sont en MILLIMÈTRES.
+#
+# Pour appliquer ce fichier :
+#   ros2 launch pentographe_kinematics kinematics.launch.py
+# ou directement :
+#   ros2 run pentographe_kinematics kinematics_node \
+#     --ros-args --params-file config/pentographe_kinematics.yaml
+
+pentographe_kinematics:
+  ros__parameters:
+    # --- Dimensions des barres (mesurées sur le robot) ---
+    l0: 137.0   # entraxe des deux moteurs A1A5
+    l1: 86.0    # bras gauche        A1A2
+    l2: 150.0   # avant-bras gauche  A2A3
+    l3: 150.0   # avant-bras droit   A3A4
+    l4: 85.0    # bras droit         A4A5
+
+    # --- Position du crayon sur l'avant-bras gauche (link2) ---
+    e_par: -16.0   # décalage le long de A2->A3 (négatif = en deçà de A3)
+    e_perp: 26.0   # décalage perpendiculaire
