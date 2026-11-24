@@ -26,6 +26,7 @@ setup(
     entry_points={
         'console_scripts': [
             'kinematics_node = pentographe_kinematics.kinematics_node:main',
+            'rviz_joint_state_node = pentographe_kinematics.rviz_joint_state_node:main',
         ],
     },
 )

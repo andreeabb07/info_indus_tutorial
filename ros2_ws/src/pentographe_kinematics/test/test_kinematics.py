@@ -39,3 +39,16 @@ def test_parametres_personnalises():
     r1, r4 = k.inverse(x, y, prof)
     assert r1 == pytest.approx(2.0, abs=1e-9)
     assert r4 == pytest.approx(1.0, abs=1e-9)
+
+
+
+@pytest.mark.parametrize("q1, q4", [(2.0, 1.0), (1.8, 1.3), (2.3, 0.7)])
+def test_all_joint_angles_coherent_avec_inverse(q1, q4):
+    """Les orientations theta1 et theta4 (moteurs) renvoyées par all_joint_angles
+    doivent coïncider avec les angles du modèle inverse."""
+    x, y = k.forward(q1, q4)
+    a = k.all_joint_angles(x, y)
+    r1, r4 = k.inverse(x, y)
+    assert a["theta1"] == pytest.approx(r1, abs=1e-9)
+    assert a["theta4"] == pytest.approx(r4, abs=1e-9)
+    assert set(a.keys()) == {"theta1", "theta2", "theta3", "theta4"}

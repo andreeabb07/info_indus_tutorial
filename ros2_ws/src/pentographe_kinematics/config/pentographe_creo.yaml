@@ -1,0 +1,14 @@
+# Dimensions du modèle Creo (celles des meshes de l'URDF), pour la simulation RViz.
+# Alignées sur le fichier kinematics_cao.yaml du package pentographe_description.
+#
+#   ros2 launch pentographe_kinematics rviz_joint_state.launch.py
+
+pentographe_rviz_joint_state:
+  ros__parameters:
+    l0: 138.0
+    l1: 80.0
+    l2: 157.0
+    l3: 147.0
+    l4: 79.0
+    e_par: -16.0
+    e_perp: 26.0
