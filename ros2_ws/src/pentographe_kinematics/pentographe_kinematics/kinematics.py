@@ -72,3 +72,32 @@ def inverse(x, y, p=PantographParams()):
     A4 = _circle_intersection(A3, p.l3, (p.l0, 0.0), p.l4, +1)
     q4 = math.atan2(A4[1], A4[0] - p.l0)
     return (q1, q4)
+
+
+def all_joint_angles(x, y, p=PantographParams()):
+    """Les quatre orientations absolues des barres, pour la simulation RViz.
+
+    À partir de la position (x, y) du crayon, renvoie un dictionnaire des quatre
+    angles ABSOLUS (orientation de chaque barre dans le repère mathématique XY,
+    mesurée depuis x0), en radians :
+
+      theta1 : orientation de link1  (A1 -> A2)   — bras gauche (moteur)
+      theta2 : orientation de link2  (A2 -> A3)   — avant-bras gauche
+      theta3 : orientation de link3  (A4 -> A3)   — avant-bras droit
+      theta4 : orientation de link4  (A5 -> A4)   — bras droit (moteur)
+
+    Le nœud de simulation convertit ensuite ces angles dans le repère de l'URDF.
+    Lève Unreachable si le point est hors de l'espace de travail.
+    """
+    E = (x, y)
+    L = math.hypot(p.l2 + p.e_par, p.e_perp)
+    delta = math.atan2(p.e_perp, p.l2 + p.e_par)
+    A2 = _circle_intersection((0.0, 0.0), p.l1, E, L, +1)
+    theta1 = math.atan2(A2[1], A2[0])                       # link1 : A1 -> A2
+    theta2 = math.atan2(E[1] - A2[1], E[0] - A2[0]) - delta  # link2 : A2 -> A3
+    A3 = (A2[0] + p.l2 * math.cos(theta2), A2[1] + p.l2 * math.sin(theta2))
+    A4 = _circle_intersection(A3, p.l3, (p.l0, 0.0), p.l4, +1)
+    theta4 = math.atan2(A4[1], A4[0] - p.l0)                # link4 : A5 -> A4
+    theta3 = math.atan2(A3[1] - A4[1], A3[0] - A4[0])       # link3 : A4 -> A3
+    return {"theta1": theta1, "theta2": theta2,
+            "theta3": theta3, "theta4": theta4}
